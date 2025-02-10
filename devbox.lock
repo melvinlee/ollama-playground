@@ -1,6 +1,70 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "pipenv@latest": {
+      "last_modified": "2025-01-19T08:16:51Z",
+      "resolved": "github:NixOS/nixpkgs/50165c4f7eb48ce82bd063e1fb8047a0f515f8ce#pipenv",
+      "source": "devbox-search",
+      "version": "2024.2.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y15kvpmjdjqj4lzc592x20bnai1k65ma-pipenv-2024.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/9fwy9c12kp24lzc2lj7xb7fl4ysdn1hl-pipenv-2024.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/y15kvpmjdjqj4lzc592x20bnai1k65ma-pipenv-2024.2.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lyyzjyk9wndlzgp9yg6bryz18rwzm6r6-pipenv-2024.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/3dlpw02z9wpdx8v19x8k7gsajhfx2898-pipenv-2024.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/lyyzjyk9wndlzgp9yg6bryz18rwzm6r6-pipenv-2024.2.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/b9wl3wqmhkwrlamrsy5h7w3k6lkhncnv-pipenv-2024.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/6cdn7ilqxfpjw56rg7d5g0i72lqn1drm-pipenv-2024.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/b9wl3wqmhkwrlamrsy5h7w3k6lkhncnv-pipenv-2024.2.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/q06ppnv4hinh5w0bjz1cs0xkx5fhd7fa-pipenv-2024.2.0",
+              "default": true
+            },
+            {
+              "name": "dist",
+              "path": "/nix/store/si20kr8aqhf5h4q00073m48nyb404c6c-pipenv-2024.2.0-dist"
+            }
+          ],
+          "store_path": "/nix/store/q06ppnv4hinh5w0bjz1cs0xkx5fhd7fa-pipenv-2024.2.0"
+        }
+      }
+    },
     "python@3.9": {
       "last_modified": "2025-01-19T08:16:51Z",
       "plugin_version": "0.0.4",
