@@ -34,7 +34,7 @@ if submit and text:
         response_container.markdown("")
         
         # Add to chat history
-        st.session_state['chat_history'].append({
+        st.session_state['chat_history'].insert(0, {
             "user": text, 
             "ollama": full_response
         })
