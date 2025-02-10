@@ -1,4 +1,4 @@
-# ollama-playground
+# ollama-playground [![Develop in Devbox](https://jetpack.io/img/devbox/develop_with_devbox.svg)](https://jetpack.io/devbox)
 
 Experiment with Ollama and LangChain.
 
