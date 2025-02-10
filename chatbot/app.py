@@ -20,4 +20,15 @@ def generate_response(text):
 if submit and text:
     with st.spinner("Generating response..."):
         response = generate_response(text)
+        st.session_state['chat_history'].append({"user": text, "ollama": response})
         st.write(response)
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+st.write("Chat History")
+
+for chat in st.session_state.chat_history:
+    st.write(f"**🧑 User**: {chat['user']}")
+    st.write(f"**🧠 Assistant**: {chat['ollama']}")
+    st.write("---")
