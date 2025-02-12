@@ -1,5 +1,7 @@
 import streamlit as st
 from langchain_ollama import ChatOllama
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import SystemMessagePromptTemplate, HumanMessagePromptTemplate, AIMessagePromptTemplate, ChatPromptTemplate
 
 # Define available models
 AVAILABLE_MODELS = [
@@ -12,6 +14,7 @@ url = "http://localhost:11434"
 
 st.title("Create GPT like Chatbot with Ollama🧠 and Langchain⚡!")
 
+system_message = SystemMessagePromptTemplate.from_template("You are a helpful AI Assistant")
 # Move model selection to sidebar
 with st.sidebar:
     selected_model = st.selectbox("Select a model:", AVAILABLE_MODELS)
@@ -35,17 +38,40 @@ for chat_history in st.session_state.chat_history:
     with st.chat_message(chat_history["role"]):
         st.markdown(chat_history["content"])
 
-def generate_response(text):
-    llm = ChatOllama(model=selected_model, base_url=url, temperature=0)
-    return llm.stream(text)
+def generate_response():
+    model = ChatOllama(model=selected_model, base_url=url, temperature=0)
+
+    chat_template = ChatPromptTemplate.from_messages(chat_history)
+    chain = chat_template | model | StrOutputParser () 
+    
+    response = chain.stream({})
+
+    return response
+
+def get_history():
+    chat_history =[system_message]
+    
+    for chat in st.session_state.chat_history:
+        if chat["role"] == "user":
+            chat_history.append(HumanMessagePromptTemplate.from_template(chat["content"]))
+        else:
+            chat_history.append(AIMessagePromptTemplate.from_template(chat["content"]))
+    return chat_history
 
 if prompt := st.chat_input("Say something"):
     st.chat_message("user").markdown(prompt)
 
     st.session_state.chat_history.append({"role": "user", "content": prompt})
+
+    humanPrompt = HumanMessagePromptTemplate.from_template(prompt)
+    
+    chat_history = get_history()
+    chat_history.append(humanPrompt)
+
+    print(chat_history)
     
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        response = st.write_stream(generate_response(prompt))
+        response = st.write_stream(generate_response())
     # Add assistant response to chat history
     st.session_state.chat_history.append({"role": "assistant", "content": response})
