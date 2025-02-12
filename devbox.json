@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "packages": [
+    "python@3.9",
+    "poetry@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "poetry install"
+    ],
+    "scripts": {
+      "start-chatgpt": [
+        "poetry run streamlit run example/chatbot-gpt/app.py"
+      ]
+    }
+  }
+}
