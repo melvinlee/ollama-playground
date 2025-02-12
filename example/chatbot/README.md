@@ -1,3 +1,18 @@
+## Prerequisites
+
+- [Devbox](https://www.jetpack.io/devbox)
+- [Ollama](https://ollama.ai)
+
+Enter development shell:
+```bash
+devbox shell
+```
+
+Install Python dependencies:
+```bash
+pipenv install
+```
+
 ## Running the Application
 
 Start Ollama server (in a separate terminal):
@@ -12,7 +27,6 @@ ollama pull llama2:3b
 
 Start the Streamlit app:
 ```bash
-cd chatbot
 pipenv run streamlit run app.py
 ```
 
