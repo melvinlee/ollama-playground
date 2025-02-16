@@ -38,11 +38,11 @@ for chat_history in st.session_state.chat_history:
     with st.chat_message(chat_history["role"]):
         st.markdown(chat_history["content"])
 
-def generate_response():
+def generate_response(chat_history):
     model = ChatOllama(model=selected_model, base_url=url, temperature=0)
 
     chat_template = ChatPromptTemplate.from_messages(chat_history)
-    chain = chat_template | model | StrOutputParser () 
+    chain = chat_template | model | StrOutputParser() 
     
     response = chain.stream({})
 
@@ -72,6 +72,6 @@ if prompt := st.chat_input("Say something"):
     
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        response = st.write_stream(generate_response())
+        response = st.write_stream(generate_response(chat_history))
     # Add assistant response to chat history
     st.session_state.chat_history.append({"role": "assistant", "content": response})
