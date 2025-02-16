@@ -14,12 +14,21 @@ url = "http://localhost:11434"
 
 st.title("Create GPT like Chatbot with Ollama🧠 and Langchain⚡!")
 
-system_message = SystemMessagePromptTemplate.from_template("You are a helpful AI Assistant")
 # Move model selection to sidebar
 with st.sidebar:
     selected_model = st.selectbox("Select a model:", AVAILABLE_MODELS)
     st.markdown("Select different models to compare their responses. Make sure you have pulled the models using `ollama pull <model_name>` first.*")
-    
+
+    # Add system prompt configuration
+    system_prompt = st.text_area(
+        "System Prompt:",
+        value="You are a helpful AI Assistant",
+        help="Define the AI assistant's personality and behavior",
+        height=100
+    )
+
+    system_message = SystemMessagePromptTemplate.from_template(system_prompt)
+
     # Add the GitHub link at the bottom of the sidebar
     st.markdown("<br>" * 10, unsafe_allow_html=True)  # Add vertical spacing
     st.markdown(
